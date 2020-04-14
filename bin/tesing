@@ -1,0 +1,27 @@
+#! /usr/bin/perl
+#
+# Copyright (C) 2020 by Peder Stray
+#
+
+use strict;
+
+printf "This is a test\n";
+
+package Type;
+
+sub MODIFY_CODE_ATTRIBUTES {
+    my($pkg,$sub,@attrlist) = @_;
+
+    printf "1: %s %s [%s]\n", $pkg, $sub, join "] [", @attrlist;
+
+    return;
+}
+
+package Type::Number;
+BEGIN {
+    our @ISA = qw(Type);
+}
+
+sub nadd :op(+) :arg(Number) {
+    printf "This is the add operator\n";
+}

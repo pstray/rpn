@@ -1,0 +1,46 @@
+#                                                          -*- cperl -*-
+#
+# Copyright (C) 2020 by Peder Stray
+#
+
+eval 'exec perl -S -CSDL $0 ${1+"$@"}'
+    if 0; # not running under some shell
+
+use utf8;
+use strict;
+use warnings;
+
+use Getopt::Long;
+
+use Encode;
+
+use Math::BigInt upgrade => 'Math::BigFloat';
+use Math::BigFloat;# try => 'GMP';
+use Math::BigRat;
+
+use Term::ReadLine;
+use LWP;
+use Carp;
+use Data::Dumper;
+
+use Time::HiRes qw(time);
+
+$SIG{__DIE__} = sub { die Carp::longmess(@_); };
+
+$Data::Dumper::Indent = $Data::Dumper::Sortkeys = 1;
+
+my $opt_config_file = "$ENV{HOME}/.config/rpn/config";
+my $opt_module_path = "";
+
+eval { require $opt_config_file if -e $opt_config_file; };
+if ($@) {
+    print "Error in config: $@\n";
+}
+
+my @module_path = 
+
+
+
+
+
+
